@@ -1,0 +1,49 @@
+.AnonymousMenu{
+    display: flex;
+}
+.AnonymousMenu--link{
+    cursor: pointer;
+    display: block;
+    width: 170px;
+    height: 37px;
+    border: 2px solid black;
+    margin: 0 10px;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    padding: 4px 0;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    color: #000000;
+
+    transition: all 0.1s ease;
+}
+/* .AnonymousMenu--link:hover{
+    transform: translateY(-3px);
+    transition: transform 0.4s ease;
+} */
+
+
+.login{
+    color: black;
+    background-color: transparent;
+}
+
+.signup{
+    color: white;
+    background-color: #181616;
+}
+
+.signup:hover,
+.signup:focus{
+    border: 0;
+    background-color: rgb(246, 62, 62);
+}
+
+.login:hover,
+.login:focus{
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+}
