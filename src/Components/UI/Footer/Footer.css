@@ -41,17 +41,17 @@
 
 .facebook{
     margin-left: 0;
-    background-image: url("../../assets/footer--facebook_icon.svg");
+    background-image: url("../../../assets/footer--facebook_icon.svg");
 }
 .instagram{
-    background-image: url("../../assets/footer--instagram_icon.svg");
+    background-image: url("../../../assets/footer--instagram_icon.svg");
 }
 .vk{
-    background-image: url("../../assets/footer--vk_icon.svg");
+    background-image: url("../../../assets/footer--vk_icon.svg");
     margin-right: 0;
 }
 .youtube{
-    background-image: url("../../assets/footer--youtube_icon.svg");
+    background-image: url("../../../assets/footer--youtube_icon.svg");
 }
 .footer--links-link{
     text-decoration: none;

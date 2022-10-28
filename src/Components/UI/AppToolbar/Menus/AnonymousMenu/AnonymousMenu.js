@@ -4,8 +4,8 @@ import './AnonymousMenu.css'
 const AnonymousMenu = () =>{
     return (
         <div className="AnonymousMenu">
-            <Link className="AnonymousMenu--link login">Вход</Link>
-            <Link className="AnonymousMenu--link signup">Регистрация</Link>
+            <Link to="/login" className="AnonymousMenu--link login">Вход</Link>
+            <Link to='/register' className="AnonymousMenu--link signup">Регистрация</Link>
         </div>
     )
 }

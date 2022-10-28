@@ -32,7 +32,7 @@ const AppToolbar = ({user}) =>{
                     <div className="AppToolbar--navigation-wrapper">
                         <div className="container">
                             <div className="AppToolbar--navigation">
-                                <Link  className="AppToolbar--navigation-link">Главная</Link>
+                                <Link to="/" className="AppToolbar--navigation-link">Главная</Link>
                                 <Link  className="AppToolbar--navigation-link">Категории</Link>
                                 <Link  className="AppToolbar--navigation-link">О журнале</Link>
                                 <Link  className="AppToolbar--navigation-link">Текущий выпуск</Link>
