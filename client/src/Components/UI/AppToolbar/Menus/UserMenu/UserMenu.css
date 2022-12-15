@@ -1,0 +1,28 @@
+.UserMenu__control {
+    min-width: 200px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.UserMenu{
+    position: relative;
+    border: 1px solid #787878;
+}
+.UserMenu__dropdown{
+    border: 1px solid #787878;
+    width: 202px;
+    position: absolute;
+    top: 100%;
+    left: -1px ;
+    cursor: pointer;
+}
+.UserMenu__dropdown_item{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+}

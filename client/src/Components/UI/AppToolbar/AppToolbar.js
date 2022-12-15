@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {ReactComponent as Logo} from "../../../assets/dku_headerlogo.svg"
 import './AppToolbar.css'
 import AnonymousMenu from "./Menus/AnonymousMenu/AnonymousMenu";
+import UserMenu from "./Menus/UserMenu/UserMenu.js";
 const AppToolbar = ({user}) =>{
     return (
         
@@ -24,7 +25,7 @@ const AppToolbar = ({user}) =>{
                                 </div>
                                 
                                 {
-                                    user?<></>:<AnonymousMenu></AnonymousMenu>
+                                    user?<UserMenu user={user}></UserMenu>:<AnonymousMenu></AnonymousMenu>
                                 }
                             </div>  
                         </div>
@@ -33,12 +34,11 @@ const AppToolbar = ({user}) =>{
                         <div className="container">
                             <div className="AppToolbar--navigation">
                                 <Link to="/" className="AppToolbar--navigation-link">Главная</Link>
-                                <Link  className="AppToolbar--navigation-link">Категории</Link>
-                                <Link  className="AppToolbar--navigation-link">О журнале</Link>
+                                <Link to="/about" className="AppToolbar--navigation-link">О журнале</Link>
                                 <Link  className="AppToolbar--navigation-link">Текущий выпуск</Link>
                                 <Link  className="AppToolbar--navigation-link">Архивы</Link>
                                 <Link  className="AppToolbar--navigation-link">Контакты</Link>
-                                <Link  className="AppToolbar--navigation-link">Больше</Link>
+                                <Link to="/sendarticle" className="AppToolbar--navigation-link">Отправить статью</Link>
                             </div>
                         </div>
                     </div>

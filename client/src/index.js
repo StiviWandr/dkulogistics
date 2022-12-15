@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import {configureStore} from "@reduxjs/toolkit";
 import '@fontsource/montserrat'
 import usersReducer from './Store/userSlice';
-import axios from './axiosApi';
+import api from './http';
 
 const localStorageMiddleware = ({getState}) => next => action => {
     const result = next(action);
@@ -32,14 +32,14 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware)
 })
 
-axios.interceptors.request.use(config => {
-    try {
-        config.headers['Authorization'] = store.getState().users.user.token;
-    } catch (e) {
-        // do nothing, no token exists;
-    }
-    return config;
-});
+// api.interceptors.request.use(config => {
+//     try {
+//         config.headers['Authorization'] = store.getState().users.user.token;
+//     } catch (e) {
+//         // do nothing, no token exists;
+//     }
+//     return config;
+// });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

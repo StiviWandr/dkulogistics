@@ -3,8 +3,8 @@ import './Register.css'
 import {Link, useNavigate} from "react-router-dom"
 import shownPass from '../../assets/shownPass.svg'
 import hiddenPass from '../../assets/hiddenPass.svg'
-import { registerUser } from "../../Store/userSlice";
 import { useDispatch } from "react-redux";
+import {registerUser} from '../../Store/userSlice.js'
 const Register = () => {
 
     const dispatch = useDispatch();
@@ -14,8 +14,7 @@ const Register = () => {
     const [registerState, setRegisterState] = useState({
         name: '',
         email:'',
-        login: '',
-        birthdate: '',
+        birthDate: '',
         password: '', 
         passwordRepeat: '',
         phone: ''
@@ -23,8 +22,7 @@ const Register = () => {
     const [dirtyState, setDirtyState]=useState({
         name: false,
         email: false,
-        login: false,
-        birthdate: false,
+        birthDate: false,
         password: false, 
         passwordRepeat: false,
         phone: false
@@ -32,8 +30,7 @@ const Register = () => {
     const [errorState, setErrorState]=useState({
         nameError: 'Поле не может быть пустым',
         emailError:'Поле не может быть пустым',
-        loginError: 'Поле не может быть пустым',
-        birthdateError: 'Поле не может быть пустым',
+        birthDateError: 'Поле не может быть пустым',
         passwordError: 'Поле не может быть пустым', 
         passwordRepeatError: 'Поле не может быть пустым',
         phoneError: 'Поле не может быть пустым'
@@ -41,10 +38,8 @@ const Register = () => {
 
     const submitHandler = async e => {
         e.preventDefault();
-        await dispatch(registerUser({
-            userData: {...registerState},
-            navigate,
-        }));
+        dispatch(registerUser({userData: {...registerState},
+            navigate,}))
     }
 
 
@@ -69,19 +64,12 @@ const Register = () => {
                 :
                 setErrorState({...errorState, nameError: ''})
                 break;
-            case 'birthdate': 
-                setRegisterState({...registerState, birthdate: e.target.value})
+            case 'birthDate': 
+                setRegisterState({...registerState, birthDate: e.target.value})
                 e.target.value===''?
-                setErrorState({...errorState, birthdateError: 'Поле не может быть пустым'})
+                setErrorState({...errorState, birthDateError: 'Поле не может быть пустым'})
                 :
-                setErrorState({...errorState, birthdateError: ''})
-                break;
-            case 'login': 
-                setRegisterState({...registerState, login: e.target.value})
-                e.target.value===''?
-                setErrorState({...errorState, loginError: 'Поле не может быть пустым'})
-                :
-                setErrorState({...errorState, loginError: ''})
+                setErrorState({...errorState, birthDateError: ''})
                 break;
             case 'password': 
                 setRegisterState({...registerState, password: e.target.value})
@@ -104,6 +92,8 @@ const Register = () => {
                 :
                 setErrorState({...errorState, phoneError: ''})
                 break;
+            default:
+                return errorState;
         }
     }
     const blurHandler = (e) =>{
@@ -114,11 +104,8 @@ const Register = () => {
             case 'name': 
                 setDirtyState({...dirtyState, name: true})
                 break;
-            case 'birthdate': 
-                setDirtyState({...dirtyState, birthdate: true})
-                break;
-            case 'login': 
-                setDirtyState({...dirtyState, login: true})
+            case 'birthDate': 
+                setDirtyState({...dirtyState, birthDate: true})
                 break;
             case 'password': 
                 setDirtyState({...dirtyState, password: true})
@@ -129,6 +116,8 @@ const Register = () => {
             case 'phone': 
                 setDirtyState({...dirtyState, phone: true})
                 break;
+            default:
+                return dirtyState;
 
         }
     }
@@ -154,9 +143,9 @@ const Register = () => {
                             
                         </div>
                         <div className="RegisterForm--form-group">
-                            <input name='birthdate' 
+                            <input name='birthDate' 
                                 onBlur={e=>{blurHandler(e)}} 
-                                value={registerState.birthdate}
+                                value={registerState.birthDate}
                                 onChange={(e)=>{textHandler(e)}} 
                                 className = "RegisterForm--form-input" 
                                 type='date' placeholder=" "
@@ -164,24 +153,25 @@ const Register = () => {
                             <label className="RegisterForm--form-label">Дата рождения</label>
                             <div className="success_icon"></div>
                             {
-                                (dirtyState.birthdate && errorState.birthdateError!=='')?
-                                <div className="RegisterForm--form-input_error">{errorState.birthdateError}</div>:null
+                                (dirtyState.birthDate && errorState.birthDateError!=='')?
+                                <div className="RegisterForm--form-input_error">{errorState.birthDateError}</div>:null
                             }
                             
                         </div>
                         <div className="RegisterForm--form-group">
-                            <input name='login' 
-                                onBlur={e=>{blurHandler(e)}} 
-                                value={registerState.login}
-                                onChange={(e)=>{textHandler(e)}} 
+                            <input 
+                                name='email' 
+                                onBlur={e=>{blurHandler(e)}}
+                                value={registerState.email}
+                                onChange={(e)=>{textHandler(e)}}  
                                 className = "RegisterForm--form-input" 
-                                type='text' placeholder=" "
+                                type='email' placeholder=" "
                             />
-                            <label className="RegisterForm--form-label">Логин</label>
+                            <label className="RegisterForm--form-label">Email</label>
                             <div className="success_icon"></div>
                             {
-                                (dirtyState.login && errorState.loginError!=='')?
-                                <div className="RegisterForm--form-input_error">{errorState.loginError}</div>:null
+                                (dirtyState.email && errorState.emailError!=='')?
+                                <div className="RegisterForm--form-input_error">{errorState.emailError}</div>:null
                             }
                             
                         </div>
@@ -196,7 +186,7 @@ const Register = () => {
                             />
                             <label className="RegisterForm--form-label">Пароль</label>
                             <button className="LoginForm--showPassword_button" onClick={togglePassShowing}>
-                                <img className="showPass" src={passwordInputType==='password'?hiddenPass:shownPass}/>
+                                <img className="showPass" alt="showPass" src={passwordInputType==='password'?hiddenPass:shownPass}/>
                             </button>
                             {
                                 (dirtyState.password && errorState.passwordError!=='')?
@@ -238,23 +228,7 @@ const Register = () => {
                             }
                             
                         </div>
-                        <div className="RegisterForm--form-group">
-                            <input 
-                                name='email' 
-                                onBlur={e=>{blurHandler(e)}}
-                                value={registerState.email}
-                                onChange={(e)=>{textHandler(e)}}  
-                                className = "RegisterForm--form-input" 
-                                type='email' placeholder=" "
-                            />
-                            <label className="RegisterForm--form-label">Email</label>
-                            <div className="success_icon"></div>
-                            {
-                                (dirtyState.email && errorState.emailError!=='')?
-                                <div className="RegisterForm--form-input_error">{errorState.emailError}</div>:null
-                            }
-                            
-                        </div>
+                        
                         
                         <button type="submit" className="RegisterForm--submit_button">Зарегестрироваться</button>
                         <div className="account_group">
