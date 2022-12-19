@@ -4,16 +4,18 @@ import {Link, useNavigate} from "react-router-dom"
 import shownPass from '../../assets/shownPass.svg'
 import hiddenPass from '../../assets/hiddenPass.svg'
 import { loginUser } from "../../Store/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const Login = () => {
     const [passwordInputType, setPasswordInputType] = useState("password");
     const [showPassImg, setShowPassImg] = useState(shownPass)
     const navigate = useNavigate();
+    const state = useSelector(state=>state);
     const dispatch = useDispatch();
     const [loginState, setLoginState] = useState({
         email:'',
         password: '', 
     })
+    console.log(state);
     const [dirtyState, setDirtyState]=useState({
         email: false,
         password: false,
@@ -92,9 +94,9 @@ const Login = () => {
                             <button className="LoginForm--showPassword_button" onClick={togglePassShowing}>
                                 <img className="showPass" src={passwordInputType==='password'? hiddenPass:shownPass}/>
                             </button>
-                            {/* <div className="LoginForm--form-input_error"></div> */}
+                            
                         </div>
-                        
+                        <div className="LoginForm--form-input_error">{state.users.loginError}</div>
                         <button className="LoginForm--submit_button">Войти</button>
                         <div className="account_group_login">
                             <Link className="account_group--link forgotPassword">Напомнить пароль</Link>

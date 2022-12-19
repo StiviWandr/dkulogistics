@@ -1,6 +1,6 @@
 .UserMenu__control {
-    min-width: 200px;
-    height: 40px;
+    width: 100%;
+    padding:10px 40px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -9,20 +9,23 @@
 .UserMenu{
     position: relative;
     border: 1px solid #787878;
+    min-width: 200px;
 }
 .UserMenu__dropdown{
     border: 1px solid #787878;
-    width: 202px;
+    width: calc(100% + 2px);
     position: absolute;
     top: 100%;
     left: -1px ;
     cursor: pointer;
 }
 .UserMenu__dropdown_item{
+    background: #fff;
     cursor: pointer;
     display: flex;
     align-items: center;
+    padding: 10px 40px;
     justify-content: center;
     text-align: center;
-    width: 200px;
+    width: 100%;
 }

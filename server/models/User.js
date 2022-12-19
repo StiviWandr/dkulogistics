@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     birthDate: {type: String, required: true},
     name: {type: String, required: true},
     phone: {type: String,  required: true},
+    role: {type: String, required: true, default: "user"}
 })
 
 const User = mongoose.model("User", UserSchema);

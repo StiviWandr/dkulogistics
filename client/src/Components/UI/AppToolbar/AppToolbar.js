@@ -35,9 +35,8 @@ const AppToolbar = ({user}) =>{
                             <div className="AppToolbar--navigation">
                                 <Link to="/" className="AppToolbar--navigation-link">Главная</Link>
                                 <Link to="/about" className="AppToolbar--navigation-link">О журнале</Link>
-                                <Link  className="AppToolbar--navigation-link">Текущий выпуск</Link>
-                                <Link  className="AppToolbar--navigation-link">Архивы</Link>
-                                <Link  className="AppToolbar--navigation-link">Контакты</Link>
+                                <Link to="/currentjournal" className="AppToolbar--navigation-link">Текущий выпуск</Link>
+                                <Link to="/archive" className="AppToolbar--navigation-link">Архивы</Link>
                                 <Link to="/sendarticle" className="AppToolbar--navigation-link">Отправить статью</Link>
                             </div>
                         </div>

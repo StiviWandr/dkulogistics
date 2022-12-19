@@ -1,5 +1,7 @@
 .AppToolbar_Wrapper{
-  
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background-color: white;
 }
 .AppToolbar--body-wrapper{
@@ -10,11 +12,11 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    align-items:  center;
+    align-items:  flex-end;
 }
 .header_info{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 .header_info>*{
     margin: 0 12px;

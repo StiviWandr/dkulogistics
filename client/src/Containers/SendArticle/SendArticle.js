@@ -5,7 +5,9 @@ const SendArticle = () =>{
     return (
         <Container>
             <div className="SendArticle">
-                <div></div>
+                <form>
+                    
+                </form>
             </div>
         </Container>
         

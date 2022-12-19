@@ -9,7 +9,7 @@
 
 }
 .About__topic{
-    padding-top: 60px;
+    margin-top: 50px;
 }
 .About__paragraph{
     font-family: 'Montserrat';
@@ -24,14 +24,14 @@
 
 .About__main_text{
     font-family: 'Montserrat';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 24px;
-text-align: justify;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
 
-color: #232323;
-margin: 30px 0;
+    color: #232323;
+    margin: 30px 0;
 }
 
 .About__news_rules{
@@ -62,8 +62,6 @@ margin: 30px 0;
     margin: 0 auto;
 }
 .About__info{
-    display: flex;
-    justify-content: space-between;
     margin: 40px 0;
 }
 .About__info_content{
@@ -85,4 +83,18 @@ margin: 30px 0;
     color: #232323;
     text-align: center;
 
+}
+
+.About__topic_number_list{
+    margin: 40px 0
+}
+
+.About__topic_number_list > * {
+    margin: 15px 0;
+}
+.About__topic_disc_list {
+    margin: 15px 0;
+}
+.About__topic_disc_list > * {
+    margin: 15px 0;
 }

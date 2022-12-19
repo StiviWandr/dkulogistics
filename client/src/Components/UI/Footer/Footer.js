@@ -17,24 +17,19 @@ const Footer = () =>{
                     <div className="footer--links">
                         <h3 className="footer--links-title">Политика журнала</h3>
                         <Link to = "/about?title=goals" className="footer--links-link">Цели и задачи</Link>
-                        <Link to = "#" className="footer--links-link">Разделы журнала</Link>
-                        <Link to = "#" className="footer--links-link">Периодичность</Link>
-                        <Link to = "#" className="footer--links-link">Политика свободного доступа</Link>
-                        <Link to = "#" className="footer--links-link">Архивация</Link>
-                        <Link to = "#" className="footer--links-link">Рецензирование</Link>
-                        <Link to = "#" className="footer--links-link">Этика научных публикаций</Link>
-                        <Link to = "#" className="footer--links-link">Учредитель</Link>
-                        <Link to = "#" className="footer--links-link">Плата за публикацию</Link>
-                        <Link to = "#" className="footer--links-link">Заимствования и плагиат</Link>
-                        <Link to = "#" className="footer--links-link">Политика размещения препринтов и постпринтов</Link>
-
+                        <Link to = "/about?title=period" className="footer--links-link">Периодичность</Link>
+                        <Link to = "/about?title=opensource" className="footer--links-link">Политика свободного доступа</Link>
+                        <Link to = "/about?title=check" className="footer--links-link">Рецензирование</Link>
+                        <Link to = "/about?title=sciencepublic" className="footer--links-link">Этика научных публикаций</Link>
+                        <Link to = "/about?title=copy" className="footer--links-link">Заимствования и плагиат</Link>
+                        <Link to = "/about?title=editorialboard" className="footer--links-link">Редакционная коллегия</Link>
                     </div>
                     <div className="footer--links">
                         <h3 className="footer--links-title">Прием статей</h3>
                         <Link to = "/sendarticle" className="footer--links-link">Отправка статей</Link>
                         <Link to = "/about?title=sendarticlesrules" className="footer--links-link">Правила для авторов</Link>
                         <Link to = "/about?title=" className="footer--links-link">Авторские права</Link>
-                        <Link to = "/about?title=" className="footer--links-link">Приватность</Link>
+                        <Link to = "/about?title=payment" className="footer--links-link">Плата за публикацию</Link>
                         
                     </div>
                 </div>

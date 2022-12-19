@@ -59,7 +59,7 @@ export const registerUser = createAsyncThunk(
             return res.data;
         } catch (e) {
             if (e.response && e.response.data) {
-                thunkApi.dispatch(usersSlice.actions.catchRegisterError(e.response.data));
+                thunkApi.dispatch(usersSlice.actions.catchRegisterError(e.response.data.message));
             } else {
                 thunkApi.dispatch(usersSlice.actions.globalError(e));
             }
@@ -99,9 +99,6 @@ const usersSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-            .addCase(registerUser.fulfilled, state => {
-                state.registerError = null;
-            })
             .addCase(loginUser.fulfilled, (state, action) => {
                 state.user = action.payload.user;
                 state.loginError = null;

@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+# Клонирование репозитория 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+git clone repository_name .
 
-## Available Scripts
+## Запуск приложения
 
-In the project directory, you can run:
+1. npm start - локально на своем устройстве
+
+2. npm run build - сборка приложения на сервере
 
 ### `npm start`
 

@@ -3,12 +3,13 @@ import './Register.css'
 import {Link, useNavigate} from "react-router-dom"
 import shownPass from '../../assets/shownPass.svg'
 import hiddenPass from '../../assets/hiddenPass.svg'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {registerUser} from '../../Store/userSlice.js'
 const Register = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate('/');
+    const state = useSelector(state=>state);
     const [passwordInputType, setPasswordInputType] = useState("password");
     const [showPassImg, setShowPassImg] = useState(shownPass)
     const [registerState, setRegisterState] = useState({
@@ -228,7 +229,7 @@ const Register = () => {
                             }
                             
                         </div>
-                        
+                        <div className="RegisterForm--form-input_error">{state.users.registerError}</div>
                         
                         <button type="submit" className="RegisterForm--submit_button">Зарегестрироваться</button>
                         <div className="account_group">

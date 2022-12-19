@@ -15,7 +15,7 @@ const Routes = ({user}) =>{
             
             <Route path='/login' element={(
                 <ProtectedRoute
-                    isAllowed={user}
+                    isAllowed={!user}
                     redirectedPath='/'
                 >
                     <Login/>
@@ -24,7 +24,7 @@ const Routes = ({user}) =>{
             <Route path='/about' element={<About/>}/>
             <Route path='/register' element={(
                 <ProtectedRoute
-                    isAllowed={user}
+                    isAllowed={!user}
                     redirectedPath='/'
                 >
                     <Register/>

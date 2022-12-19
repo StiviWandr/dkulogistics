@@ -8,9 +8,8 @@ import Period from "../../Components/About/Period/Period";
 import SciencePublic from "../../Components/About/SciencePublic/SciencePublic";
 import SendingRules from "../../Components/About/SendingRules/SendingRules";
 import Container from "../../Components/UI/Container/Container";
-import EditorialBoard from "../../Components/About/EditorialBoard/EditorialBoard";
 import './About.css'
-const About =(props)=>{
+const AuthorRules =(props)=>{
     
     const executeScroll = (elementID, yOffset) => {
         const element = document.getElementById(elementID);
@@ -44,7 +43,6 @@ const About =(props)=>{
                         <Goals/>
                         <Period/>
                         <OpenSource/>
-                        <EditorialBoard />
                         <Check />
                         <SciencePublic/>
                         <SendingRules/>
@@ -56,4 +54,4 @@ const About =(props)=>{
     )
 }
 
-export default About;
+export default AuthorRules;
