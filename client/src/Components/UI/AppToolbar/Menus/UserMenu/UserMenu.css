@@ -18,14 +18,22 @@
     top: 100%;
     left: -1px ;
     cursor: pointer;
+    background: #fff;
+    z-index: 5;
 }
 .UserMenu__dropdown_item{
     background: #fff;
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 10px 40px;
+    padding: 10px 20px;
     justify-content: center;
     text-align: center;
     width: 100%;
+    
+}
+
+.UserMenu__dropdown_link{
+    text-decoration: none;
+    color: black;
 }

@@ -19,8 +19,8 @@ router.get( '/activate/:link', userController.activate);
 router.get( '/refresh', userController.refresh);
 router.get( '/users', authMiddleware, userController.getUsers);
 
-router.post('/article/upload', upload.single('articleFile'), articleController.uploadArticle);
+router.post('/articles/upload', upload.single('articleFile'), articleController.uploadArticle);
 
-
-router.post('/journal/create', journalController.createJournal)
+router.get('/journals')
+router.post('/journals/create', journalController.createJournal)
 export default router;

@@ -15,6 +15,10 @@ class JournalService{
 
         return journal;
     }
+    async getJournals(){
+        const journals = await Journal.find()
+        return journals;
+    }
    
 }
 const journalService = new JournalService();

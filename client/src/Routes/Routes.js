@@ -12,7 +12,6 @@ const Routes = ({user}) =>{
     return (
         <Routers>
             <Route path='/' element={<MainPage/>}/>
-            
             <Route path='/login' element={(
                 <ProtectedRoute
                     isAllowed={!user}
@@ -36,6 +35,14 @@ const Routes = ({user}) =>{
                     redirectedPath='/login'
                 >
                     <SendArticle/>
+                </ProtectedRoute>
+            )}/>
+             <Route path='/admin/uploadarticle' element={(
+                <ProtectedRoute
+                    isAllowed={(!user && !user?.role === "user")}
+                    redirectedPath='/'
+                >
+                    <Register/>
                 </ProtectedRoute>
             )}/>
         </Routers>

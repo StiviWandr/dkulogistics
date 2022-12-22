@@ -3,6 +3,7 @@ export default class UserDto{
     id;
     isActivated;
     birthDate;
+    role;
 
     constructor(model){
         this.email=model.email;
@@ -10,5 +11,6 @@ export default class UserDto{
         this.birthDate = model.birthDate;
         this.name = model.name;
         this.isActivated=model.isActivated;
+        this.role=model.role;
     }
 }
