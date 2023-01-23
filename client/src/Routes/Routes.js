@@ -8,6 +8,7 @@ import Login from '../Containers/Login/Login';
 import Register from '../Containers/Register/Register';
 import About from '../Containers/About/About';
 import SendArticle from '../Containers/SendArticle/SendArticle'
+import Archives from '../Containers/Archives/Archives';
 const Routes = ({user}) =>{
     return (
         <Routers>
@@ -21,6 +22,7 @@ const Routes = ({user}) =>{
                 </ProtectedRoute>
             )}/>
             <Route path='/about' element={<About/>}/>
+            <Route path='/archive' element={<Archives/>}/>
             <Route path='/register' element={(
                 <ProtectedRoute
                     isAllowed={!user}
@@ -34,7 +36,7 @@ const Routes = ({user}) =>{
                     isAllowed={!user}
                     redirectedPath='/login'
                 >
-                    <SendArticle/>
+                    <SendArticle />
                 </ProtectedRoute>
             )}/>
              <Route path='/admin/uploadarticle' element={(

@@ -28,8 +28,7 @@ const Footer = () =>{
                         <h3 className="footer--links-title">Прием статей</h3>
                         <Link to = "/sendarticle" className="footer--links-link">Отправка статей</Link>
                         <Link to = "/about?title=sendarticlesrules" className="footer--links-link">Правила для авторов</Link>
-                        <Link to = "/about?title=" className="footer--links-link">Авторские права</Link>
-                        <Link to = "/about?title=payment" className="footer--links-link">Плата за публикацию</Link>
+                        <Link to = "/sendArticletitle=" className="footer--links-link">Авторские права</Link>
                         
                     </div>
                 </div>
