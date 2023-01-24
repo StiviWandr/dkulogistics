@@ -7,7 +7,7 @@ const FormCommentInput = (props)=>{
                 name={props.name} 
                 id ={props.name} 
                 value={props.value} 
-                onChange={props.onChangeHandler} 
+                onChange={props.onChange} 
                 className = "FormCommentInput" 
                 type={props.type? props.type: 'textarea'} 
                 placeholder={props.placeholder? props.placeholder : " "}

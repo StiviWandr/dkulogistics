@@ -1,40 +1,36 @@
 .FormCommentInput_group{
     position: relative;
     background-color: transparent;
-    margin: 25px 0;
+    margin-bottom: 25px;
     width: 100%;
 }
 .FormCommentInput{
     background: transparent;
     min-height: 200px;
     width: 100%;
-    resize: none;
-    font-family: 'Source Sans Pro';
+    resize: vertical;
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 23px;
-    letter-spacing: 0.01em;
-    padding: 10px 30px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #232323;
+    padding: 10px 20px;
     background: #FFFFFF;
-    border: 1px solid #C0C0C0;
     border-radius: 4px;
 }
 
 .FormCommentInput_label{
-    font-family: 'Source Sans Pro';
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 23px;
-    /* identical to box height */
-
-    letter-spacing: 0.01em;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
 
     color: #C0C0C0;
 
     position: absolute;
-    left: 30px;
+    left: 20px;
     top: 12px;
     transition: all .3s ease;
 }
@@ -42,12 +38,11 @@
     cursor:text;
 }
 .FormCommentInput::placeholder{
-    font-family: 'Source Sans Pro';
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 23px;
-    letter-spacing: 0.01em;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
     color: #C0C0C0;
 }
 .FormCommentInput:focus ~ .FormCommentInput_label,
@@ -60,8 +55,8 @@
     top: -16px;
 }
 .FormCommentInput:focus{
-    outline: 1px solid #4FC6E0;
+    outline: 1px solid black;
 }
 .FormCommentInput:focus{
-    border: 1px solid #4FC6E0;
+    border: 1px solid black;
 }

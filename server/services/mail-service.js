@@ -32,6 +32,19 @@ class MailService{
                 </div>`
         })
     }
+    async sendArticleMail(to, link){
+        await this.transporter.sendMail({
+            from: process.env.SMTP_USER,
+            to,
+            subject: "Запрос на новую статью",
+            text: "",
+            html: 
+                `<div>
+                    <h1>Для активации перейдите по ссылке:</h1>
+                    <a href="${link}">${link}</a>
+                </div>`
+        })
+    }
 }
 const mailService = new MailService();
 
