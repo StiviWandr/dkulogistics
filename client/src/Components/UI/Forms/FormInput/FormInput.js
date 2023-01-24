@@ -1,12 +1,12 @@
 import React from "react";
-
+import "./FormInput.css"
 const FormInput = (props)=>{
     return(
         <div className="FormInput__group">
             <input 
                 name={props.name}
                 value={props.value}
-                onChange={props.onChangeHandler} 
+                onChange={props.onChange} 
                 onBlur={props.onBlurHandler} 
                 className = "FormInput" 
                 type={props.type? props.type : "text"} placeholder={props.placeholder ? props.placeholder : " "}

@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../../Components/UI/Container/Container";
 import FormInput from "../../Components/UI/Forms/FormInput/FormInput";
 import Text from "../../Components/UI/Text/Text";
 import Title from "../../Components/UI/Title/Title";
 import "./SendArticle.css"
 const SendArticle = () =>{
+    const [articleState, setArticleState] = useState({
+        title: ""
+    })
+
     return (
         <Container>
             <div className="SendArticle">
                 <Title>
                     Отправка статьи
                 </Title>
-                <form>
+                <form className="SendArticle__form">
                     <FormInput
-                    
+                        label="Название статьи"
+                        value={articleState.title}
+                        onChange = {(e)=>{setArticleState({...articleState, title: e.target.value})}}
                     />
                 </form>
                 <Title>

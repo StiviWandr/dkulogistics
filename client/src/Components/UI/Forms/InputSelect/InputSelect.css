@@ -1,0 +1,83 @@
+.InputSelect{
+    background: transparent;
+    min-height: 44px;
+    width: 100%;
+    
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+
+    position: relative;
+    background-color: transparent;
+    margin: 25px 0;
+    display: flex;
+}
+.InputSelect__select{
+    width: 35%;
+}
+
+
+.InputSelect__input{
+    background: transparent;
+    min-height: 44px;
+    width: 65%;
+    
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+    padding: 10px 30px;
+    border: 1px solid #C0C0C0;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.InputSelect__input_label{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    /* identical to box height */
+
+    letter-spacing: 0.01em;
+
+    color: #C0C0C0;
+
+    position: absolute;
+    left: 30px;
+    top: 12px;
+    transition: all .3s ease;
+}
+.InputSelect__input_label{
+    cursor:text;
+}
+.InputSelect__input::placeholder{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+    color: #C0C0C0;
+}
+.InputSelect__input:focus ~ .InputSelect__input_label,
+.InputSelect__input:not(:placeholder-shown) ~ .InputSelect__input_label{
+    padding: 0 3px;
+    background: white;
+    font-size: 16px;
+    z-index: 1;
+    color: black;
+    top: -16px;
+}
+input:focus{
+    outline: 1px solid #4FC6E0;
+}
+.InputSelect__input:focus{
+    border: 1px solid #4FC6E0;
+}

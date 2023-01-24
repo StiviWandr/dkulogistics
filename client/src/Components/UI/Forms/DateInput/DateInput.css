@@ -1,0 +1,70 @@
+.DateInput_group{
+    position: relative;
+    background-color: transparent;
+    margin: 25px 0;
+}
+.DateInput{
+    background: transparent;
+    min-height: 44px;
+    width: 100%;
+    
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+    padding: 10px 30px;
+    border: 1px solid #C0C0C0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.DateInput_label{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    /* identical to box height */
+
+    letter-spacing: 0.01em;
+
+    color: #C0C0C0;
+
+    position: absolute;
+    left: 30px;
+    top: 12px;
+    transition: all .3s ease;
+}
+.DateInput_label{
+    cursor:text;
+}
+.DateInput::placeholder{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+    color: #C0C0C0;
+}
+.DateInput:focus ~ .DateInput_label,
+.DateInput:not(:placeholder-shown) ~ .DateInput_label{
+    padding: 0 3px;
+    background: white;
+    font-size: 16px;
+    z-index: 1;
+    color: black;
+    top: -16px;
+}
+input:focus{
+    outline: 1px solid #4FC6E0;
+}
+.DateInput:focus{
+    border: 1px solid #4FC6E0;
+}
+
+.normalBorder{
+    border-radius: 0;
+}
