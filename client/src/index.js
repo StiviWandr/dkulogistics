@@ -9,6 +9,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import '@fontsource/montserrat'
 import usersReducer from './Store/userSlice';
 import api from './http';
+import journalReducer from './Store/journalSlice';
 
 const localStorageMiddleware = ({getState}) => next => action => {
     const result = next(action);
@@ -26,7 +27,7 @@ const loadFromLocalStorage = () => {
 const store = configureStore({
     reducer: {
         users: usersReducer,
-
+        journals: journalReducer
     },
     preloadedState: loadFromLocalStorage(),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware)

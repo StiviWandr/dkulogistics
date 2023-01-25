@@ -9,6 +9,7 @@ import Register from '../Containers/Register/Register';
 import About from '../Containers/About/About';
 import SendArticle from '../Containers/SendArticle/SendArticle'
 import Archives from '../Containers/Archives/Archives';
+import UploadArticle from '../Containers/UploadArticle/UploadArticle';
 const Routes = ({user}) =>{
     return (
         <Routers>
@@ -41,10 +42,10 @@ const Routes = ({user}) =>{
             )}/>
              <Route path='/admin/uploadarticle' element={(
                 <ProtectedRoute
-                    isAllowed={(!user && !user?.role === "user")}
+                    isAllowed={(!user && !user?.role !== "admin")}
                     redirectedPath='/'
                 >
-                    <Register/>
+                    <UploadArticle/>
                 </ProtectedRoute>
             )}/>
         </Routers>

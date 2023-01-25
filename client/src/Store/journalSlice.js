@@ -8,8 +8,20 @@ const initialState = {
     journals: [],
     currentJournal: {},
     currentArticle: {},
+    requestSent: false
 }
-
+export const sendRequestForArticle = createAsyncThunk(
+    'journals/sendRequest',
+    async (payload, thunkApi) => {
+        try{
+            const response = api.post("/articles/request", payload)
+            return response.data;
+        }catch(e){
+            console.log(e);
+        }
+        
+    }
+)
 export const checkAuth = createAsyncThunk(
     'user/checkAuth',
     async (payload, thunkApi) => {
@@ -28,13 +40,15 @@ export const checkAuth = createAsyncThunk(
         
     }
 )
+export const setArticleRequestSent = (value) => {
+    setRequestSent(value)
+}
 
 export const getJournals = createAsyncThunk(
     'journal/getJournals',
     async (payload, thunkApi) => {
         try{
-            const response = api.get("/journals");
-            
+            api.get("/journals");
         }catch(e){
 
         }
@@ -44,9 +58,13 @@ export const getJournals = createAsyncThunk(
 const journalSlice = createSlice({
     name: 'journals',
     initialState,
+    reducers: {
+        setRequestSent(state, action){
+            state.requestSent = action.value
+        }
+    },
     extraReducers: builder => {
         builder
-            
             .addCase(checkAuth.fulfilled, (state, action) => {
                 state.user = action.payload.user;
                 state.loginError = null;
@@ -54,5 +72,5 @@ const journalSlice = createSlice({
 
     }
 })
-
+export const { setRequestSent } = journalSlice.actions
 export default journalSlice.reducer;

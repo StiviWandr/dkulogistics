@@ -1,43 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../Components/UI/Container/Container";
+import FileUploader from "../../Components/UI/Forms/FileUploader/FileUploader";
 import FormCommentInput from "../../Components/UI/Forms/FormCommentInput/FormCommentInput";
 import FormInput from "../../Components/UI/Forms/FormInput/FormInput";
 import Text from "../../Components/UI/Text/Text";
 import Title from "../../Components/UI/Title/Title";
+import { useDispatch, useSelector} from "react-redux";
 import "./SendArticle.css"
+import { sendRequestForArticle, setRequestSent } from "../../Store/journalSlice";
+import ModalWindow from "../../Components/UI/ModalWindow/ModalWindow";
 const SendArticle = () =>{
+    const dispatch = useDispatch()
     const [articleState, setArticleState] = useState({
         title: "",
         authors: "",
+        annotation: ""
     })
-
+    const [selectedFile, setSelectedFile] = useState(null);
+    const showModal = useSelector(state=>state.journals.requestSent)
+    const onSubmit = (e) => {
+        e.preventDefault()
+        const formData = new FormData();
+        formData.append("title", articleState.title)
+        formData.append("authors", articleState.authors)
+        formData.append("annotation", articleState.title)
+        formData.append("file", selectedFile)
+        dispatch(sendRequestForArticle(formData))
+        dispatch(setRequestSent(true))
+    }
+    useEffect(()=>{
+        console.log(showModal);
+    }, [])
     return (
         <Container>
             <div className="SendArticle">
                 <Title>
                     Отправка статьи
                 </Title>
-                <form className="SendArticle__form">
+                <form className="SendArticle__form" onSubmit={onSubmit}>
                     <FormInput
+                        required
                         label="Название статьи"
                         value={articleState.title}
                         onChange = {(e)=>{setArticleState({...articleState, title: e.target.value})}}
                     />
                     <FormInput
+                        required
                         label="Полные имена авторов"
-                        value={articleState.title}
-                        onChange = {(e)=>{setArticleState({...articleState, title: e.target.value})}}
+                        value={articleState.authors}
+                        onChange = {(e)=>{setArticleState({...articleState, authors: e.target.value})}}
                     />
                     <FormCommentInput
+                        required
                         label="Аннотация"
-                        value={articleState.title}
-                        onChange = {(e)=>{setArticleState({...articleState, title: e.target.value})}}
+                        value={articleState.annotation}
+                        onChange = {(e)=>{setArticleState({...articleState, annotation: e.target.value})}}
                     />
-                    <FormInput
-                        label="Название статьи"
-                        value={articleState.title}
-                        onChange = {(e)=>{setArticleState({...articleState, title: e.target.value})}}
+                    <FileUploader
+                        FileName={selectedFile? selectedFile.name :  "Файл не выбран"}
+                        FileInput={(e) => {
+                            setSelectedFile(e.target.files[0])}
+                        }
                     />
+                    <button className="LoginForm--submit_button">Отправить</button>
                 </form>
                 <Title>
                     Авторские права
@@ -57,7 +82,14 @@ const SendArticle = () =>{
                 <Text>
                     Имена и адреса электронной почты, введенные на сайте этого журнала, будут использованы исключительно для целей, обозначенных этим журналом, и не будут использованы для каких-либо других целей или предоставлены другим лицам и организациям.
                 </Text>
+                <ModalWindow modalStatus = {showModal} 
+                    bgOnClick = {()=>{dispatch(setRequestSent(false))}}
+                >
+                    <Title>Спасибо за обращение!</Title>
+                    <Text>Заявка отправлена в редакционнуую коллегию</Text>
+                </ModalWindow>
             </div>
+            
         </Container>
         
     )

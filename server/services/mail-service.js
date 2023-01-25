@@ -8,7 +8,7 @@ class MailService{
             port: process.env.SMTP_PORT,
             secure: true, // true for 465, false for other ports
             logger: true,
-            debug: true,
+            debug: false,
             secureConnection: false,
             auth: {
                 user: process.env.SMTP_USER, // generated ethereal user
@@ -32,7 +32,7 @@ class MailService{
                 </div>`
         })
     }
-    async sendArticleMail(to, link){
+    async sendArticleMail(to, data){
         await this.transporter.sendMail({
             from: process.env.SMTP_USER,
             to,
@@ -40,8 +40,11 @@ class MailService{
             text: "",
             html: 
                 `<div>
-                    <h1>Для активации перейдите по ссылке:</h1>
-                    <a href="${link}">${link}</a>
+                    <h1>Запрос на публикацию статьи</h1>
+                    <p>Название статьи: ${data.title}</p>
+                    <p>Авторы: ${data.authors}</p>
+                    <p>Аннотация: ${data.annotation}</p>
+                    <a href=${process.env.API_URL+"/uploads/"+data.fileName}>Нажмите, чтобы прочитать статью</a>
                 </div>`
         })
     }

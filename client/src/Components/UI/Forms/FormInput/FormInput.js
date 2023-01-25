@@ -4,6 +4,7 @@ const FormInput = (props)=>{
     return(
         <div className="FormInput__group">
             <input 
+                required={props.required}
                 name={props.name}
                 value={props.value}
                 onChange={props.onChange} 

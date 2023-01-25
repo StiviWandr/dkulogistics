@@ -1,5 +1,5 @@
 import React from "react";
-import Select from 'react-select'
+import Select from "react-select"
 import './FormSelect.css'
 const FormSelect = (props) =>{
     const customStyles = {
@@ -9,7 +9,7 @@ const FormSelect = (props) =>{
           ...provided,
           padding: 10,
           background: state.isSelected ? '#A7E3EF': 'white',
-          fontFamily: 'Source Sans Pro',
+          fontFamily: 'Montserrat',
           fontSize: 18,
           minHeight:44,
           height: 44,
@@ -19,7 +19,7 @@ const FormSelect = (props) =>{
               
               cursor: 'pointer',
               background: "#A7E3EF",
-              fontFamily: 'Source Sans Pro',
+              fontFamily: 'Montserrat',
               fontSize: 18,
               color: '#4D4D4F'
             }               
@@ -67,7 +67,8 @@ const FormSelect = (props) =>{
           background: "#fff",
           paddingLeft: 20, 
           margin: 0,
-          fontFamily: 'Source Sans Pro',
+          fontFamily: 'Montserrat',
+          fontWeight: 500,
           fontSize: 18,
           color: "#C0C0C0",
           cursor: 'pointer',
@@ -90,7 +91,7 @@ const FormSelect = (props) =>{
                 placeholder={props.placeholder} 
                 options={props.options} 
                 defaultValue={props.value}
-                onChange={props.onChangeHandler}
+                onChange={props.onChange}
                 inputProps={{autoComplete: 'off', autoCorrect: 'off', spellCheck: 'off' }}
               />
         </div>
