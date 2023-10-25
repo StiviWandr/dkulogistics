@@ -12,11 +12,11 @@ class JournalService{
             throw ApiError.BadRequest(`Такой журнал уже существует`)
         }
         const journal = await Journal.create({year: data.year, period: data.period})
-
         return journal;
     }
     async getJournals(){
         const journals = await Journal.find()
+        journals.sort((a, b) => a.year < b.year ? 1 : -1);
         return journals;
     }
    

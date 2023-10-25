@@ -10,6 +10,7 @@ import About from '../Containers/About/About';
 import SendArticle from '../Containers/SendArticle/SendArticle'
 import Archives from '../Containers/Archives/Archives';
 import UploadArticle from '../Containers/UploadArticle/UploadArticle';
+import CreateJournal from '../Containers/CreateJournal/CreateJournal';
 const Routes = ({user}) =>{
     return (
         <Routers>
@@ -47,6 +48,14 @@ const Routes = ({user}) =>{
                 >
                     <UploadArticle/>
                 </ProtectedRoute>
+            )}/>
+            <Route path='/admin/createjournal' element={(
+                <CreateJournal
+                    isAllowed={(!user && !user?.role !== "admin")}
+                    redirectedPath='/'
+                >
+                    <UploadArticle/>
+                </CreateJournal>
             )}/>
         </Routers>
     )

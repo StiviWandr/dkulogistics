@@ -22,6 +22,6 @@ router.get( '/users', authMiddleware, userController.getUsers);
 router.post('/articles/upload', articleController.uploadArticle);
 router.post('/articles/request', upload.single('file'), articleController.articleRequest);
 
-router.get('/journals')
+router.get('/journals', journalController.getJournals)
 router.post('/journals/create', journalController.createJournal);
 export default router;

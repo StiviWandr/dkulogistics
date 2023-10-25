@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../Components/UI/Container/Container";
 import FileUploader from "../../Components/UI/Forms/FileUploader/FileUploader";
 import FormCommentInput from "../../Components/UI/Forms/FormCommentInput/FormCommentInput";
@@ -7,7 +7,7 @@ import Text from "../../Components/UI/Text/Text";
 import Title from "../../Components/UI/Title/Title";
 import { useDispatch, useSelector} from "react-redux";
 import "./UploadArticle.css"
-import { sendRequestForArticle, setRequestSent } from "../../Store/journalSlice";
+import { getJournals, sendRequestForArticle, setRequestSent } from "../../Store/journalSlice";
 import ModalWindow from "../../Components/UI/ModalWindow/ModalWindow";
 import FormSelect from "../../Components/UI/Forms/FormSelect/FormSelect";
 const UploadArticle = () =>{
@@ -19,6 +19,8 @@ const UploadArticle = () =>{
     })
     const [selectedFile, setSelectedFile] = useState(null);
     const showModal = useSelector(state=>state.journals.requestSent)
+    const journals = useSelector(state=>state.journals.journals);
+    const [localjournals, setLocalJorunals] = useState([])
     const onSubmit = (e) => {
         e.preventDefault()
         const formData = new FormData();
@@ -27,11 +29,26 @@ const UploadArticle = () =>{
         formData.append("annotation", articleState.title)
         formData.append("file", selectedFile)
         dispatch(sendRequestForArticle(formData))
-        dispatch(setRequestSent(true))
+
     }
-    const currentYear = new Date().getFullYear();
-    const prevYear = currentYear - 1;
-    const nextYear = currentYear + 1;
+
+    useEffect(()=>{
+        dispatch(getJournals())
+
+    }, [dispatch])
+    useEffect(()=>{
+        const arr = journals?.map(journal=>{
+            console.log(journals);
+            return {
+                value: journal.__id, label: `Год ${journal.year} Номер ${journal.period}`
+            }
+        })
+        setLocalJorunals(arr)
+    }, [dispatch, journals])
+
+    useEffect(()=>{
+        console.log(localjournals);
+    }, [localjournals])
     return (
         <Container>
             <div className="UploadArticle">
@@ -58,22 +75,10 @@ const UploadArticle = () =>{
                         onChange = {(e)=>{setArticleState({...articleState, annotation: e.target.value})}}
                     />
                     <FormSelect
-                        placeholder = "Год журнала"
-                        options = {[
-                            {value:prevYear, label: prevYear},
-                            {value:currentYear, label: currentYear},
-                            {value:nextYear, label: nextYear},
-                        ]}
+                        placeholder = "Журнал"
+                        options = {localjournals}
                     />
-                    <FormSelect
-                        placeholder = "Номер выпуска"
-                        options = {[
-                            {value:1, label: 1},
-                            {value:2, label: 2},
-                            {value:3, label: 3},
-                            {value:4, label: 4},
-                        ]}
-                    />
+                    
                     <FileUploader
                         FileName={selectedFile? selectedFile.name :  "Файл не выбран"}
                         FileInput={(e) => {

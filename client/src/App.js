@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 import { checkAuth } from "./Store/userSlice";
 
 function App() {
-	const state = useSelector(state=>state)
-	console.log(state);
   	const user = useSelector(state=>state.users.user)
   	useEffect(()=>{
 		if(localStorage.getItem('token')){

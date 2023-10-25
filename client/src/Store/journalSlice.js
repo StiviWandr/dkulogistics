@@ -1,38 +1,27 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import api from "../http";
-import axios from 'axios'
-import apiURL from '../http'
-
 
 const initialState = {
     journals: [],
     currentJournal: {},
     currentArticle: {},
-    requestSent: false
+    requestSent: false,
+    journalError: "",
+    articleError: "",
+    journalSent: false,
+    global:""
 }
 export const sendRequestForArticle = createAsyncThunk(
     'journals/sendRequest',
     async (payload, thunkApi) => {
         try{
-            const response = api.post("/articles/request", payload)
-            return response.data;
-        }catch(e){
-            console.log(e);
-        }
-        
-    }
-)
-export const checkAuth = createAsyncThunk(
-    'user/checkAuth',
-    async (payload, thunkApi) => {
-        try{
-            const response = axios.get(`${apiURL}/refresh`, {withCredentials: true})
-            localStorage.setItem('token', response.data.accessToken)
-            payload.navigate('/');
+            const response = await api.post("/articles/request", payload)
+            await thunkApi.dispatch(journalSlice.actions.setRequestSent(true))
+            await thunkApi.dispatch(journalSlice.actions.setArticleError(""))
             return response.data;
         }catch(e){
             if (e.response && e.response.data) {
-                thunkApi.dispatch(journalSlice.actions.catchLoginError(e.response.data));
+                thunkApi.dispatch(journalSlice.actions.setArticleError(e.response.data.message));
             } else {
                 thunkApi.dispatch(journalSlice.actions.globalError(e));
             }
@@ -40,17 +29,35 @@ export const checkAuth = createAsyncThunk(
         
     }
 )
-export const setArticleRequestSent = (value) => {
-    setRequestSent(value)
-}
-
+export const createJournal = createAsyncThunk(
+    'journals/createJournal',
+    async (payload, thunkApi) => {
+        try{
+            const response = await api.post("/journals/create", payload.data);
+            await thunkApi.dispatch(journalSlice.actions.setJournalSent(true))
+            await thunkApi.dispatch(journalSlice.actions.setError(""))
+            return response.data;
+        }catch(e){
+            if (e.response && e.response.data) {
+                thunkApi.dispatch(journalSlice.actions.setError(e.response.data.message));
+            } else {
+                thunkApi.dispatch(journalSlice.actions.globalError(e));
+            }
+        }
+        
+    }
+)
 export const getJournals = createAsyncThunk(
     'journal/getJournals',
     async (payload, thunkApi) => {
         try{
-            api.get("/journals");
+            const response = await api.get("/journals");
+            
+            await thunkApi.dispatch(setJournals(response.data))
         }catch(e){
-
+            if (e.response && e.response.data) {
+                thunkApi.dispatch(journalSlice.actions.globalError(e.response.data.message));
+            }
         }
     }
 )
@@ -59,18 +66,31 @@ const journalSlice = createSlice({
     name: 'journals',
     initialState,
     reducers: {
+        setJournals: (state, action) => {
+            state.journals = action.payload;
+        },
+        globalError: (state, action) => {
+            state.global = action.payload;
+        },
         setRequestSent(state, action){
-            state.requestSent = action.value
+            state.requestSent = action.payload
+        },
+        setJournalSent(state, action){
+            state.journalSent = action.payload
+        },
+        setError(state, action){
+            state.journalError = action.payload
+        },
+        setArticleError(state, action){
+            state.articleError = action.payload
         }
     },
     extraReducers: builder => {
         builder
-            .addCase(checkAuth.fulfilled, (state, action) => {
-                state.user = action.payload.user;
-                state.loginError = null;
+            .addCase(createJournal.rejected, (state, action) => {
+                state.journalSent = false;
             })
-
     }
 })
-export const { setRequestSent } = journalSlice.actions
+export const { setRequestSent, setJournalSent, setError, setJournals } = journalSlice.actions
 export default journalSlice.reducer;
